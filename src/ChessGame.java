@@ -5,10 +5,24 @@ public class ChessGame {
     public static ArrayList<Piece> capturedWhite = new ArrayList<Piece>();
     public static ArrayList<Piece> capturedBlack = new ArrayList<Piece>();
     public void set() {
-        board[3][0] = new Pawn("Black", 3, 0);
-        board[2][1] = new Pawn("white", 2, 1);
+        board[3][0] = new King("white", 3, 0);
+        board[5][2] = new King("black", 5, 2);
     }
     public void play() {
-        System.out.println(board[3][0].moveValid(2, 1));
+        
+    }
+    //used for detecting checks, checkmates, and stopping kings from moving too close.
+    public static int[] findKing(String color) {
+        int[] kingLoc = new int[2];
+        for(int row = 0; row < 6; row++) {
+            for(int col = 0; col < 6; col++) {
+                if(board[col][row] instanceof King && board[col][row].color == color) {
+                    kingLoc[0] = col;
+                    kingLoc[1] = row;
+                    break;
+                }
+            }
+        }
+        return kingLoc;
     }
 }
