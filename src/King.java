@@ -3,6 +3,11 @@ public class King extends Piece {
     private int maxVerticalMove = 1;
     public King(String color, int posX, int posY) {
         super(color, posX, posY);
+        if(color == "white") {
+            disp = "♚";
+        } else {
+            disp = "♔";
+        }
     }
     @Override
     public boolean moveValid(int newX, int newY) {
