@@ -1,8 +1,14 @@
 public class Pawn extends Piece {
     private int maxHorizontalMove = 1;
     private int maxVerticalMove = 1;
+    //constructor
     public Pawn(String color, int posX, int posY) {
         super(color, posX, posY);
+        if(color == "white") {
+            disp = "♟︎";
+        } else {
+            disp = "♙";
+        }
     }
     @Override
     public boolean moveValid(int newX, int newY) {

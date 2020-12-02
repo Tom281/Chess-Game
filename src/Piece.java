@@ -1,5 +1,5 @@
 public class Piece {
-    char disp;
+    String disp;
     int posX;
     int posY;
     String color;
