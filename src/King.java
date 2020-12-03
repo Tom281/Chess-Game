@@ -1,6 +1,7 @@
 public class King extends Piece {
     private int maxHorizontalMove = 1;
     private int maxVerticalMove = 1;
+    //constructor
     public King(String color, int posX, int posY) {
         super(color, posX, posY);
         if(color == "white") {

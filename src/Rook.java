@@ -1,4 +1,5 @@
 public class Rook extends Piece {
+    //constructor
     public Rook(String color, int posX, int posY) {
         super(color, posX, posY);
         if(color == "white") {
@@ -13,6 +14,7 @@ public class Rook extends Piece {
         if(newX != posX && newY != posY) {
             return false;
         }
+        //check for collisions.
         if(collision(newX, newY)) {
             return false;
         }
