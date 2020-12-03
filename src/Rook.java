@@ -7,4 +7,15 @@ public class Rook extends Piece {
             disp = "♖";
         }
     }
+    @Override
+    public boolean moveValid(int newX, int newY) {
+        //Make sure Rook moves in a straight line.
+        if(newX != posX && newY != posY) {
+            return false;
+        }
+        if(collision(newX, newY)) {
+            return false;
+        }
+        return true;
+    }
 }
