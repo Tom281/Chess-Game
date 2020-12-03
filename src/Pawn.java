@@ -1,6 +1,6 @@
 public class Pawn extends Piece {
     private int maxHorizontalMove = 1;
-    private int maxVerticalMove = 1;
+    private int maxVerticalMove = 2;
     //constructor
     public Pawn(String color, int posX, int posY) {
         super(color, posX, posY);
@@ -54,5 +54,10 @@ public class Pawn extends Piece {
             return false;
         }
         return true;
+    }
+    @Override
+    public void move(int newX, int newY) {
+        super.move(newX, newY);
+        maxVerticalMove = 1;
     }
 }

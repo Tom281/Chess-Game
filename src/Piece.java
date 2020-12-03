@@ -16,15 +16,13 @@ public class Piece {
         this.posY = posY;
     }
     public void move(int newX, int newY) {
-        if(moveValid(newX, newY)) {
-            //set the new position
-            ChessGame.board[newX][newY] = ChessGame.board[posX][posY];
-            //clear the old position
-            ChessGame.board[posX][posY] = null;
-            //update piece coordinates
-            posX = newX;
-            posY = newY;
-        }
+        //set the new position
+        ChessGame.board[newX][newY] = ChessGame.board[posX][posY];
+        //clear the old position
+        ChessGame.board[posX][posY] = null;
+        //update piece coordinates
+        posX = newX;
+        posY = newY;
     }
     public boolean moveValid(int newX, int newY) {
         //Defined in subclass
@@ -44,6 +42,7 @@ public class Piece {
         }
         //kill the Piece you capture
         target.kill();
+        move(targX, targY);
     }
     //Cycles through the spaces between the current space and the target space to check for collisions.
     public boolean collision(int newX, int newY) {
@@ -57,6 +56,7 @@ public class Piece {
                         return true;
                     }
                 }
+                return false;
             }
             //diagonal, up left
             if(newX < posX && newY > posY) {
@@ -65,6 +65,7 @@ public class Piece {
                         return true;
                     }
                 }
+                return false;
             }
             //diagonal, down right
             if(newX > posX && newY < posY) {
@@ -73,6 +74,7 @@ public class Piece {
                         return true;
                     }
                 }
+                return false;
             }
             //diagonal, down left
             if(newX < posX && newY < posY) {
@@ -81,6 +83,7 @@ public class Piece {
                         return true;
                     }
                 }
+                return false;
             }
             //up
             if(newY > posY) {
@@ -89,6 +92,7 @@ public class Piece {
                         return true;
                     }
                 }
+                return false;
             }
             //down
             if(newY < posY) {
@@ -97,6 +101,7 @@ public class Piece {
                         return true;
                     }
                 }
+                return false;
             }
             //left
             if(newX < posX) {
@@ -105,6 +110,7 @@ public class Piece {
                         return true;
                     }
                 }
+                return false;
             }
             //right
             if(newX > posX) {
@@ -113,6 +119,7 @@ public class Piece {
                         return true;
                     }
                 }
+                return false;
             }
         }
         //Check the target space for a piece from the same side.
