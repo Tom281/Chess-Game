@@ -49,6 +49,10 @@ public class Pawn extends Piece {
         if(verticalMovement == 0 && horizontalMovement != 0) {
             return false;
         }
+        //check for collisions
+        if(collision(newX, newY)) {
+            return false;
+        }
         return true;
     }
 }

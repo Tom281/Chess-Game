@@ -43,6 +43,10 @@ public class King extends Piece {
                 return false;
             }
         }
+        //check for collisions
+        if(collision(newX, newY)) {
+            return false;
+        }
         return true;
     }
 }

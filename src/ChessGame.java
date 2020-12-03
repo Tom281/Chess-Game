@@ -5,11 +5,8 @@ public class ChessGame {
     public static ArrayList<Piece> capturedWhite = new ArrayList<Piece>();
     public static ArrayList<Piece> capturedBlack = new ArrayList<Piece>();
     public void set() {
-        board[3][0] = new King("white", 3, 0);
-        board[5][2] = new King("black", 5, 2);
     }
     public void play() {
-        
     }
     //used for detecting checks, checkmates, and stopping kings from moving too close.
     public static int[] findKing(String color) {

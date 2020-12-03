@@ -45,4 +45,80 @@ public class Piece {
         //kill the Piece you capture
         target.kill();
     }
+    //Cycles through the spaces between the current space and the target space to check for collisions.
+    public boolean collision(int newX, int newY) {
+        //if there are spaces between the current position and the target...
+        if(Math.abs(newX - posX) > 0 || Math.abs(newY - posY) > 0) {
+            //scenarios for different directions
+            //diagonal, up right
+            if(newX > posX && newY > posY) {
+                for(int i = 1; i < Math.abs(newX - posX); i++) {
+                    if(ChessGame.board[posX + i][posY + i] != null) {
+                        return true;
+                    }
+                }
+            }
+            //diagonal, up left
+            if(newX < posX && newY > posY) {
+                for(int i = 1; i < Math.abs(newX - posX); i++) {
+                    if(ChessGame.board[posX - i][posY + i] != null) {
+                        return true;
+                    }
+                }
+            }
+            //diagonal, down right
+            if(newX > posX && newY < posY) {
+                for(int i = 1; i < Math.abs(newX - posX); i++) {
+                    if(ChessGame.board[posX + i][posY - i] != null) {
+                        return true;
+                    }
+                }
+            }
+            //diagonal, down left
+            if(newX < posX && newY < posY) {
+                for(int i = 1; i < Math.abs(newX - posX); i++) {
+                    if(ChessGame.board[posX - i][posY - i] != null) {
+                        return true;
+                    }
+                }
+            }
+            //up
+            if(newY > posY) {
+                for(int i = 1; i < Math.abs(newY - posY); i++) {
+                    if(ChessGame.board[posX][posY + i] != null) {
+                        return true;
+                    }
+                }
+            }
+            //down
+            if(newY < posY) {
+                for(int i = 1; i < Math.abs(newY - posY); i++) {
+                    if(ChessGame.board[posX][posY - i] != null) {
+                        return true;
+                    }
+                }
+            }
+            //left
+            if(newX < posX) {
+                for(int i = 1; i < Math.abs(newX - posX); i++) {
+                    if(ChessGame.board[posX - i][posY] != null) {
+                        return true;
+                    }
+                }
+            }
+            //right
+            if(newX > posX) {
+                for(int i = 1; i < Math.abs(newX - posX); i++) {
+                    if(ChessGame.board[posX + i][posY] != null) {
+                        return true;
+                    }
+                }
+            }
+        }
+        //Check the target space for a piece from the same side.
+        if(ChessGame.board[newX][newY] != null && ChessGame.board[newX][newY].color != color) {
+            return true;
+        }
+        return false;
+    }
 }
