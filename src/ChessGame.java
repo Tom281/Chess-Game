@@ -64,8 +64,12 @@ public class ChessGame {
                 } else if(!selected.moveValid(moveData[2], moveData[3])) {
                     error = "This piece can't move there.";
                 } else if(board[moveData[2]][moveData[3]] != null) {
-                    selected.capture(moveData[2], moveData[3]);
-                    error = "";
+                    if(board[moveData[2]][moveData[3]].color == turn) {
+                        selected.capture(moveData[2], moveData[3]);
+                        error = "";
+                    } else {
+                        error = "You can't capture this piece.";
+                    }
                     if(turn == "white") {
                         turn = "black";
                     } else {
@@ -120,8 +124,8 @@ public class ChessGame {
     public static int[] prompt() {
         int[] moveData = new int[4];
         System.out.println(turn.substring(0,1).toUpperCase() + turn.substring(1) + " move.");
-        currentMove = scan.nextLine();
-        if(currentMove.matches("^[A-H][1-8]\sto\s[A-H][1-8]$")) {
+        currentMove = scan.nextLine().toUpperCase();
+        if(currentMove.matches("^[A-H][1-8]\sTO\s[A-H][1-8]$")) {
             moveData[0] = letters.indexOf(currentMove.charAt(0));
             moveData[1] = numbers.indexOf(currentMove.charAt(1));
             moveData[2] = letters.indexOf(currentMove.charAt(6));
